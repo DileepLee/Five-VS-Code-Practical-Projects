@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="C:\Users\HP\OneDrive\Desktop\Visual Studio Code\Todo applications\style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="bg-container">
+    <div class="container">
+      <h2 class="heading">Todo List <img class="image" src="C:\Users\HP\Downloads\todolist-removebg-preview.png" alt="NTF"></h2>
+      <div class="row">
+        <input class="input" type="text" id="inputbox" placeholder="Add your text">
+        <button class="button" id="buttonElementContainer">Add</button>
+      </div>
+      <div class="column">
+        <ul class="List-container" id="listContainer"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    //get todoItemcontainers and Add button Elements
+    let todoItemsContainer = document.getElementById("listContainer");
+    let addTodoButtonEl = document.getElementById("buttonElementContainer");
+
+
+    //create todolists for the list
+    let todoList = [{
+            text: "Learn HTML",
+            uniqueNo:1
+        },
+        {
+          text : "Learn CSS",
+          uniqueNo:2
+        },
+        {
+          text : "Learn JavaScript",
+          uniqueNo : 3
+        }
+
+    ];
+    //get the length of the todolist...
+    let todocount = todoList.length;
+
+    //write a function for delete a list container
+    function onDeleteEl(deleteId) {
+        let todoElement = document.getElementById(deleteId);
+        todoItemsContainer.removeChild(todoElement);
+    }
+
+    //Create a function for the todolist id's and select the Each one checkbox...
+  function createAndAppendTodo(todo) {
+        let checkboxId = "checkbox" + todo.uniqueNo;
+        let deleteId = "delete" + todo.uniqueNo;
+        let labeleId = "label" + todo.uniqueNo;
+
+        //create list container with id...
+        let todoElement = document.createElement("li");
+        todoElement.classList.add("todo-item-container", "d-flex", "flex-row");
+        todoElement.id = deleteId; //mention the top deleteId here...
+        todoItemsContainer.appendChild(todoElement);
+
+        //create a checkboxinput
+        let inputElement = document.createElement("input");
+        inputElement.type = "checkbox";
+        inputElement.id = checkboxId; //mention the top checkboxId here...
+        inputElement.classList.add("checkbox-input");
+        todoElement.appendChild(inputElement);
+
+        let labelContainer = document.createElement("div");
+        labelContainer.classList.add("label-container", "d-flex", "flex-row");
+        todoElement.appendChild(labelContainer);
+
+        let labelElement = document.createElement("label");
+        labelElement.setAttribute("for", checkboxId); //mention the top checkboxId here...
+        labelElement.classList.add("checkbox-label");
+        labelElement.id = labeleId; //mention the top labeleId here...
+        labelElement.textContent = todo.text;
+        labelElement.onclick = function() {
+            labelElement.classList.toggle("label-checkbox"); //create onclick function for the label stricked and unstricked with toggle classList..
+        }
+        labelContainer.appendChild(labelElement);
+
+        //create div element for delete icon...
+        let deleteIconContainer = document.createElement("div");
+        deleteIconContainer.classList.add("delete-icon-container");
+        labelContainer.appendChild(deleteIconContainer);
+
+        //create a delete icon...
+        let deleteIcon = document.createElement("i");
+        deleteIcon.textContent = "⚔️";
+        deleteIcon.classList.add("far", "fa-trash-alt", "delete-icon", ); //Here i am put it the deleteicon but it's not display in the output soo i am adding here Emoji...
+        deleteIcon.onclick = function() {
+            onDeleteEl(deleteId); //HEre give an onclick function for the deleteElement ID...
+        }
+        deleteIconContainer.appendChild(deleteIcon);
+    }
+
+    //create for of Loop for the order based list Items...
+    for (let todo of todoList) {
+        createAndAppendTodo(todo);
+    }
+
+    //write a function to get the userInput vlaue in the text box...
+    function onAddTodo() {
+        let UserInputElement = document.getElementById("inputbox");
+        let userInputValue = UserInputElement.value;
+
+        if (userInputValue === "") {
+            alert("Enter valid Text");
+            return;
+        }
+        todocount = todocount + 1;
+
+        let newTodoEl = {
+            text: userInputValue,
+            uniqueNo: todocount
+        }
+        createAndAppendTodo(newTodoEl);
+        UserInputElement.value = "";
+
+    }
+    //write onclick function for the add button active...
+    addTodoButtonEl.onclick = function() {
+        onAddTodo();
+    }
+
+
+  </script>
+</body>
+</html>

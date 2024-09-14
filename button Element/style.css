@@ -1,0 +1,15 @@
+.button {
+      width: 380px;
+      padding-left: 160px;
+      padding-right: 160px;
+      background-color: #191970;
+      color: white;
+      border: none;
+      outline: none;
+      padding-top: 7px;
+      padding-bottom: 7px;
+      border-radius: 20px;
+      cursor:not-allowed;
+
+
+}

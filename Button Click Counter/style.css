@@ -1,0 +1,21 @@
+.bgcontainer{
+    background-color: cadetblue;
+    height: 100vh;
+    width: auto;
+    background-size: cover;
+}
+.container{
+    text-align: center;
+    padding-top: 190px;
+    
+}
+.heading{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(10, 19, 28);
+
+}
+.counter-value{
+    color: crimson;
+    font-weight: 600;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

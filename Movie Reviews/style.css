@@ -1,0 +1,56 @@
+.container{
+    background-color: #fbfbbf;
+    height: 100vh;
+    width: auto;
+    background-size: none;
+}
+.reviews-heading{
+    color: #2d3a35;
+    font-family: roboto;
+    font-size: 36px;
+    font-weight: 700;
+}
+.input-label{
+    color: brown;
+    font-family: roboto;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 16px;
+    margin-bottom: 6px;
+}
+.title-input{
+    color:rgb(228, 2, 168);
+    font-weight: 500;
+    font-family: roboto;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cbd2d9;
+    border-radius: 4px;
+    padding-left: 12px;
+
+}
+.review-textarea{
+    color: #02b108;
+    font-weight: 500;
+    font-family: roboto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #cbd2d9;
+    border-radius: 4px;
+}
+.movie-title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    font-family: monospace;
+    color:#ec448b;
+    margin-bottom: 16px;
+}
+.phara{
+  text-align: center;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 500;
+  color: green;
+}
